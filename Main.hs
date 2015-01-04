@@ -88,7 +88,7 @@ parseASN :: Parser Query
 parseASN = string "AS" >> ASNQuery <$> positiveNatural
 
 parseDomain :: Parser Query
-parseDomain = DomainQuery <$> many (noneOf ":.")
+parseDomain = DomainQuery <$> many (alphaNum <|> char '-')
 
 parseIP6 = IP6Query <$> ip6range
 parseIP4 = IP4Query <$> ip4range
